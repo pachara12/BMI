@@ -1,1 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bmi</title>
+</head>
+<!--Css-->
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        font-family: sans-serif;
+        background-image: linear-gradient(120deg,#42a066,#3a9e4f);
+        min-height: 100vh;
+    }
+    div{
+        width: 500px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        background-color:  #fff;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 1px 1px 20px #c1c1d3;
+    }
+    h2{
+        font-size: 30px;
+        font-weight: 600px;
+    }
+    .text{
+        text-align: left;
+        margin-left: 150px;
+    }
+    #w, #h{
 
+        color: #222f3e;
+        text-align:  left; 
+        font-size: 20px;
+        font-weight: 200;
+        outline: none;
+        border: none;
+        background: none;
+        border-bottom: 1px solid #343434;
+        width: 200px;
+
+    }
+    #w:focus, #h:focus{
+        border-bottom:  2px solid #343434;
+        width: 300px;
+        transition:  0.5s;
+    }
+    #result{
+        color: cornflowerblue;
+    }
+    #btn{
+        font-family: inherit;
+        margin-top: 10px;
+        border: none;
+        color: #fff;
+        background-image: linear-gradient(120deg,#6699CC,#6699FF);
+        width: 150px;
+        padding: 10px;
+        border-radius: 30px;
+        outline: none;
+        cursor: pointer;
+    }
+    #btn:hover{
+        box-shadow: 1px 1px 10px #3333CC;
+    }
+    #info{
+        font-size: 12px;
+        font-family: inherit;
+    }
+    #category{
+        font-size: 18px;
+        text-align:  center;
+    }
+</style>
+<!--Css-->
+<!--java-->
+<script type="text/javascript">
+    function BMI() {
+        var h=document.getElementById('h').value;
+        var w=document.getElementById('w').value;
+        var bmi=w/(h/100*h/100);
+        var bmio=(bmi.toFixed(2));
+
+        document.getElementById("result").innerHTML="ค่า BMI ของคุณ " + bmio;
+
+        if(bmio < 18.5){
+            category = "น้ำหนักน้อย";
+        }
+        else if( bmio >= 18.5 && bmio <= 24.9){
+            category = "ปกติ";
+        }
+        else if ( bmio >=25 && bmio <= 29.9){
+            category = "อ้วน";
+        }    
+        else{
+            category = "อ้วนมาก";
+        }
+        document.getElementById("category").textContent = category
+    }
+</script>
+<!--java-->
+<body>
+   <div>
+    <h2>BMI Calculator</h2>
+    <p class="text">ความสูง</p>
+    <input type="text" id="h">
+    <p class="text">น้ำหนัก</p>
+    <input type="text" id="w">
+    <p id="result"></p>
+    <p id="category">อยู่ในเกณท์</p>
+    <button id="btn" onclick="BMI()">คำนวณ</button>
+   </div>
+</body>
+</html>
